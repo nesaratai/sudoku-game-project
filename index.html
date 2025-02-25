@@ -3,10 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Sudoku Game!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
 </head>
 <body>
-    
+    <h1>Sudoku Game!</h1>
+    <table id="board"> 
+        <h2 id="message"></h2>
+        <tr id="box1">
+          <td class="sqr b1" id="0"></td>
+          <td class="sqr b1" id="1"></td>
+          <td class="sqr b1" id="2"></td>
+          <td class="sqr" id="3"></td>
+          <td class="sqr" id="4"></td>
+          <td class="sqr" id="5"></td>
+          <td class="sqr b1" id="6"></td>
+          <td class="sqr b1" id="7"></td>
+          <td class="sqr b1" id="8"></td>
+        </tr>
+        <tr id="box2">
+            <td class="sqr b1" id="9"></td>
+            <td class="sqr b1" id="10"></td>
+            <td class="sqr b1" id="11"></td>
+            <td class="sqr" id="12"></td>
+            <td class="sqr" id="13"></td>
+            <td class="sqr" id="14"></td>
+            <td class="sqr b1" id="15"></td>
+            <td class="sqr b1" id="16"></td>
+            <td class="sqr b1" id="17"></td>
+        </tr>
+        <tr id="box3">
+            <td class="sqr b1" id="18"></td>
+            <td class="sqr b1" id="19"></td>
+            <td class="sqr b1" id="20"></td>
+            <td class="sqr" id="21"></td>
+            <td class="sqr" id="22"></td>
+            <td class="sqr" id="23"></td>
+            <td class="sqr b1" id="24"></td>
+            <td class="sqr b1" id="25"></td>
+            <td class="sqr b1" id="26"></td>
+        </tr>
+        <tr id="box4">
+            <td class="sqr" id="27"></td>
+            <td class="sqr" id="28"></td>
+            <td class="sqr" id="29"></td>
+            <td class="sqr b1" id="30"></td>
+            <td class="sqr b1" id="31"></td>
+            <td class="sqr b1" id="32"></td>
+            <td class="sqr" id="33"></td>
+            <td class="sqr" id="34"></td>
+            <td class="sqr" id="35"></td>
+        </tr>
+        <tr id="box5">
+            <td class="sqr" id="36"></td>
+            <td class="sqr" id="37"></td>
+            <td class="sqr" id="38"></td>
+            <td class="sqr b1" id="39"></td>
+            <td class="sqr b1" id="40"></td>
+            <td class="sqr b1" id="41"></td>
+            <td class="sqr" id="42"></td>
+            <td class="sqr" id="43"></td>
+            <td class="sqr" id="44"></td>
+        </tr>
+        <tr id="box6">
+            <td class="sqr" id="45"></td>
+            <td class="sqr" id="46"></td>
+            <td class="sqr" id="47"></td>
+            <td class="sqr b1" id="48"></td>
+            <td class="sqr b1" id="49"></td>
+            <td class="sqr b1" id="50"></td>
+            <td class="sqr" id="51"></td>
+            <td class="sqr" id="52"></td>
+            <td class="sqr" id="53"></td>
+        </tr>
+        <tr id="box7">
+            <td class="sqr b1" id="54"></td>
+            <td class="sqr b1" id="55"></td>
+            <td class="sqr b1" id="56"></td>
+            <td class="sqr" id="57"></td>
+            <td class="sqr" id="58"></td>
+            <td class="sqr" id="59"></td>
+            <td class="sqr b1" id="60"></td>
+            <td class="sqr b1" id="61"></td>
+            <td class="sqr b1" id="62"></td>
+        </tr>
+        <tr id="box8">
+            <td class="sqr b1" id="63"></td>
+            <td class="sqr b1" id="64"></td>
+            <td class="sqr b1" id="65"></td>
+            <td class="sqr" id="66"></td>
+            <td class="sqr" id="67"></td>
+            <td class="sqr" id="68"></td>
+            <td class="sqr b1" id="69"></td>
+            <td class="sqr b1" id="70"></td>
+            <td class="sqr b1" id="71"></td>
+        </tr>
+        <tr id="box9">
+            <td class="sqr b1" id="72"></td>
+            <td class="sqr b1" id="73"></td>
+            <td class="sqr b1" id="74"></td>
+            <td class="sqr" id="75"></td>
+            <td class="sqr" id="76"></td>
+            <td class="sqr" id="77"></td>
+            <td class="sqr b1" id="78"></td>
+            <td class="sqr b1" id="79"></td>
+            <td class="sqr b1" id="80"></td>
+        </tr>
+    </table>
+    <button id="reset">Start New Game</button>
 </body>
 </html>
