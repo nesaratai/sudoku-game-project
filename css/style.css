@@ -31,6 +31,14 @@ h1 {
     transition: background-color 0.2s;
 }
 
+.sqr {
+    font-weight: bold;
+    color: #506983;
+}
+.sqr.duplicate {
+    color: rgb(239, 70, 70);
+    font-weight: bold; /* Optional: make duplicate numbers bold */
+}
 .sqr:hover {
     background-color: #f0f0f0;
 }
