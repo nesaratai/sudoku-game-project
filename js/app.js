@@ -24,9 +24,11 @@ let solution = [
     ['9', '8', '1', '2', '5', '6', '4', '3', '7']
 ];
 
-
+let isGameOver = false; 
 let slots = document.querySelectorAll('.sqr');
 let resetButton = document.getElementById('reset');
+let solvedButton = document.getElementById('solvedButton');
+let messageBox = document.getElementById('message'); 
 
 
 // 2. generate the board using the array from above
@@ -98,6 +100,30 @@ function duplicateSlot(currentvalue, i, j) {
 
 // 4. check solution for the board if the borad is solved correctly with no duplicate number then show msg you win.
 
+function checkSolution() {
+    let isCorrect = true;
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let index = i * 9 + j;
+            let userValue = slots[index].textContent;
+            let correctValue = solution[i][j];
+
+            if (userValue !== correctValue) {
+                isCorrect = false;
+                messageBox.textContent = "You Win!";
+                stopGame();
+            } else {
+                messageBox.textContent = "Try Again!";
+                stopGame();
+            }
+        }
+    }
+};
+
+function stopGame() {
+    slots.forEach(slot => slot.contentEditable = 'false');
+}
 
 // 5. put timer for player how much time passed when the player started the game
 
@@ -116,7 +142,8 @@ function resetBoard() {
 
             slotindex++;
         }
-    }
+    } messageBox.textContent = '';
 };
 
-//7. display the winning msg and stop the game.
+//7. activate check solution button
+solvedButton.addEventListener('click', checkSolution);

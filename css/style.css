@@ -37,7 +37,7 @@ h1 {
 }
 .sqr.duplicate {
     color: rgb(239, 70, 70);
-    font-weight: bold; /* Optional: make duplicate numbers bold */
+    font-weight: bold;
 }
 .sqr:hover {
     background-color: #f0f0f0;
@@ -45,6 +45,12 @@ h1 {
 
 .b1 {
     background-color: #e2e9b2;
+}
+
+#buttonContainer {
+    display: flex;
+    gap: 20px; 
+    align-items: center; 
 }
 
 #reset {
@@ -57,13 +63,32 @@ h1 {
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
-#reset:hover {
-    background-color: #27619e;
+#solvedButton{
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #000000;
+    background-color: #d5ec8c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
+
+#reset:hover {
+    background-color: #97fa9e;
+}
+#solvedButton:hover{
+    background-color: #efc68c;
+}
 #message {
     color: red;
     font-size: 18px;
     margin: 10px;
+}
+
+#timer{
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
