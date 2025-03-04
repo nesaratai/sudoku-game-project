@@ -13,6 +13,25 @@ h1 {
     color: #333;
     text-shadow: 1px 1px 2px #aaa;
 }
+#rulesContainer {
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#rulesContainer h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+#rulesContainer p {
+    font-size: 16px;
+    line-height: 1.5;
+}
 
 #board {
     border-collapse: collapse;
