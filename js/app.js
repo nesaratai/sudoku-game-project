@@ -1,15 +1,15 @@
 
 // 1. define requied variables
 let board = [
-    ['9', '1', '3', '', '', '', '5', '', '6',],
-    ['6', '', '7', '', '1', '', '', '2', '4',], 
-    ['', '5', '', '6', '8', '', '', '7', '',],
-    ['', '7', '9', '', '3', '', '6', '', '',],
-    ['1', '', '2', '', '9', '', '', '4', '3',],
-    ['', '3', '', '', '', '4', '', '9', '',],
-    ['', '4', '', '8', '', '1', '', '6', '',],
-    ['7', '', '6', '', '', '9', '8', '', '5',],
-    ['', '', '1', '', '', '6', '4', '', '7']
+    ['9', '', '3', '', '2', '', '5', '', '',],
+    ['6', '', '7', '', '1', '', '', '2', '4',],
+    ['2', '5', '4', '6', '8', '3', '1', '7', '9',],
+    ['4', '7', '9', '1', '3', '2', '6', '5', '8',],
+    ['1', '6', '2', '5', '9', '8', '7', '4', '3',],
+    ['5', '3', '8', '7', '6', '4', '2', '9', '1',],
+    ['3', '4', '5', '8', '7', '1', '9', '6', '2',],
+    ['7', '2', '6', '3', '4', '9', '8', '1', '5',],
+    ['9', '8', '1', '2', '5', '6', '4', '', '7']
 ];
 
 let solution = [
@@ -38,11 +38,11 @@ function genBoard() {
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
             slots[index].textContent = board[i][j];
-
+            slots[index].style.color = 'lightblack'
             // if the cell is empty make it editable
             if (board[i][j] === '') {
                 slots[index].contentEditable = 'true';
-
+                slots[index].style.color = '#74bed9'
                 // make a function to restrict slots take numbers between 1 to 9 and if the input is other than 1 to 9 clear
                 slots[index].addEventListener('input', (event) => {
                     let value = event.target.textContent.trim();
@@ -98,34 +98,66 @@ function duplicateSlot(currentvalue, i, j) {
 };
 
 
-// 4. check solution for the board if the borad is solved correctly with no duplicate number then show msg you win.
+// 4. check solution for the board if the borad is solved correctly as the solution board then show msg you win else show message try again!
 
 function checkSolution() {
     let isCorrect = true;
-
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            let index = i * 9 + j;
-            let userValue = slots[index].textContent;
+            let cellPosition = i * 9 + j;
+            let userValue = slots[cellPosition].innerText;
             let correctValue = solution[i][j];
-
-            if (userValue !== correctValue) {
-                isCorrect = false;
-                messageBox.textContent = "You Win!";
-                stopGame();
-            } else {
+            if (userValue === '') {
                 messageBox.textContent = "Try Again!";
                 stopGame();
+                return;
+            } if (userValue !== correctValue) {
+                isCorrect = false;
             }
-        }
+        };
+    } if (isCorrect) {
+        messageBox.textContent = "You Win!";
+    } else {
+        messageBox.textContent = "Try Again!";
     }
+
+    // Stop the game after checking the solution
+    stopGame();
 };
 
 function stopGame() {
     slots.forEach(slot => slot.contentEditable = 'false');
-}
+};
 
 // 5. put timer for player how much time passed when the player started the game
+let countDown;
+let totaltime = 180
+
+function startNewGame(){
+    clearInterval(countDown);
+    countDown = setInterval(() => {
+        if(totaltime > 0){
+            totaltime--;
+            let minutes = Math.floor(totaltime/60)
+            let seconds = String(totaltime % 60).padStart(2, 0);
+            document.getElementById('timeDisplay').textContent = `${minutes}:${seconds}`;
+        } else {
+            clearInterval(countDown);
+            messageBox.textContent = 'Times up! You Lost! Try Again!'
+            stopGame();
+        }
+    }, 1000);
+};
+
+resetButton.addEventListener('click', () => {
+    resetBoard();
+    totaltime = 180
+    let minutes = Math.floor(totaltime/60)
+    let seconds = String(totaltime % 60).padStart(2, 0);
+    document.getElementById('timeDisplay').textContent = `${minutes}:${seconds}`;
+    startNewGame();
+});
+
 
 // 6. activate the reset button
 resetButton.addEventListener('click', resetBoard);
