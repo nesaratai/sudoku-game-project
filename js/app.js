@@ -38,11 +38,11 @@ function genBoard() {
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
             slots[index].textContent = board[i][j];
-            slots[index].style.color = 'lightblack'
+            slots[index].style.color = 'black'
             // if the cell is empty make it editable
             if (board[i][j] === '') {
                 slots[index].contentEditable = 'true';
-                slots[index].style.color = '#74bed9'
+                slots[index].style.color = 'blue'
                 // make a function to restrict slots take numbers between 1 to 9 and if the input is other than 1 to 9 clear
                 slots[index].addEventListener('input', (event) => {
                     let value = event.target.textContent.trim();
@@ -54,8 +54,10 @@ function genBoard() {
                     // if the number in the slot is a duplicate number change the color
                     if (duplicateSlot(value, i, j)) {
                         event.target.classList.add('duplicate');
+                        event.target.style.color = 'red'
                     } else {
                         event.target.classList.remove('duplicate');
+                        event.target.style.color = 'blue'
                     }
                 });
             }
@@ -108,8 +110,7 @@ function checkSolution() {
             let userValue = slots[cellPosition].innerText;
             let correctValue = solution[i][j];
             if (userValue === '') {
-                messageBox.textContent = "Try Again!";
-                stopGame();
+                messageBox.textContent = "Try Again! Empty Slots found!";
                 return;
             } if (userValue !== correctValue) {
                 isCorrect = false;
@@ -179,3 +180,7 @@ function resetBoard() {
 
 //7. activate check solution button
 solvedButton.addEventListener('click', checkSolution);
+solvedButton.addEventListener('click', () => {
+    clearInterval(countDown);
+    stopGame();
+ });
