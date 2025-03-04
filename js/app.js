@@ -1,15 +1,15 @@
 
 // 1. define requied variables
 let board = [
-    ['9', '', '3', '', '2', '', '5', '', '',],
-    ['6', '', '7', '', '1', '', '', '2', '4',],
-    ['2', '5', '4', '6', '8', '3', '1', '7', '9',],
-    ['4', '7', '9', '1', '3', '2', '6', '5', '8',],
-    ['1', '6', '2', '5', '9', '8', '7', '4', '3',],
-    ['5', '3', '8', '7', '6', '4', '2', '9', '1',],
-    ['3', '4', '5', '8', '7', '1', '9', '6', '2',],
-    ['7', '2', '6', '3', '4', '9', '8', '1', '5',],
-    ['9', '8', '1', '2', '5', '6', '4', '', '7']
+    ['9', '1', '3', '', '', '', '5', '', '6',],
+    ['6', '', '7', '', '1', '', '', '2', '4',], 
+    ['', '5', '', '6', '8', '', '', '7', '',],
+    ['', '7', '9', '', '3', '', '6', '', '',],
+    ['1', '', '2', '', '9', '', '', '4', '3',],
+    ['', '3', '', '', '', '4', '', '9', '',],
+    ['', '4', '', '8', '', '1', '', '6', '',],
+    ['7', '', '6', '', '', '9', '8', '', '5',],
+    ['', '', '1', '', '', '6', '4', '', '7']
 ];
 
 let solution = [
@@ -132,7 +132,7 @@ function stopGame() {
 
 // 5. put timer for player how much time passed when the player started the game
 let countDown;
-let totaltime = 180
+let totaltime = 600
 
 function startNewGame(){
     clearInterval(countDown);
@@ -152,7 +152,7 @@ function startNewGame(){
 
 resetButton.addEventListener('click', () => {
     resetBoard();
-    totaltime = 180
+    totaltime = 600
     let minutes = Math.floor(totaltime/60)
     let seconds = String(totaltime % 60).padStart(2, 0);
     document.getElementById('timeDisplay').textContent = `${minutes}:${seconds}`;
@@ -179,8 +179,8 @@ function resetBoard() {
 };
 
 //7. activate check solution button
-solvedButton.addEventListener('click', checkSolution);
 solvedButton.addEventListener('click', () => {
+    checkSolution();
     clearInterval(countDown);
     stopGame();
- });
+});
